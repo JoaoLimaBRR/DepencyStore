@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using DependencyStore.Contracts;
 using DependencyStore.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
@@ -8,11 +9,19 @@ namespace DependencyStore.Controllers;
 
 public class OrderController : ControllerBase
 {
+    private readonly ICustumerRepository _custumerRepository;
+
+    public OrderController(ICustumerRepository custumerRepository)
+    {
+        _custumerRepository = custumerRepository;
+    }
+
     [Route("v1/orders")]
     [HttpPost]
     public async Task<IActionResult> Place(string customerId, string zipCode, string promoCode, int[] products)
     {
-       
+        // #1 - Recupera o cliente
+        var custumer = await _custumerRepository.GetById(customerId);
 
         // #2 - Calcula o frete
         decimal deliveryFee = 0;
