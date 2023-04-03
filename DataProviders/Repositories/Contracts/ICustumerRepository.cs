@@ -1,6 +1,6 @@
 ﻿using DependencyStore.Models;
 
-namespace DependencyStore.Contracts
+namespace DependencyStore.DataProviders.Repositories.Contracts
 {
     public interface ICustumerRepository
     {

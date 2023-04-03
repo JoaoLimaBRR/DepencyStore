@@ -1,10 +1,10 @@
 ﻿using Dapper;
-using DependencyStore.Contracts;
+using DependencyStore.DataProviders.Repositories.Contracts;
 using DependencyStore.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 
-namespace DependencyStore.Repositories
+namespace DependencyStore.DataProviders.Repositories
 {
     public class CustumerRepository : ICustumerRepository
     {
