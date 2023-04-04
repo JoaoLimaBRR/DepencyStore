@@ -28,7 +28,8 @@ public class OrderController : ControllerBase
         var custumer = await _custumerRepository.GetById(customerId);
 
         // #2 - Calcula o frete
-        var priceFee = await _deliveryFeeService.GetDeliveryFeeAsync(zipCode);
+        var deliveryFee = await _deliveryFeeService.GetDeliveryFeeAsync(zipCode);
+
         // #3 - Calcula o total dos produtos
         decimal subTotal = 0;
         const string getProductQuery = "SELECT [Id], [Name], [Price] FROM PRODUCT WHERE ID=@id";
